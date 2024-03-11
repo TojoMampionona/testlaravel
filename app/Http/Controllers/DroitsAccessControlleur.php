@@ -53,9 +53,11 @@ class DroitsAccessControlleur extends Controller
 
     public function destroy($id_droitacces)
     {
-        $id_droitacces = DroitAcces::findOrFail($id_droitacces);
-        $id_droitacces->delete();
-        return redirect()->route('create-droit')->with('success', 'Droit supprimé avec succès');
+        $droitaccess = DroitAcces::all();
+        $iddroitacces = DroitAcces::findOrFail($id_droitacces);
+        $iddroitacces->delete();
+        return redirect()->route('droits-utilisateur')->with('success', 'Droit supprimé avec succès');
+        // return view('admin.apps.droit-utilisateur', compact('droitaccess'));
     }
 
 }

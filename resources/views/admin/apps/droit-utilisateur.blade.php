@@ -96,12 +96,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
+                                                    
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                    <button type="button" class="btn btn-primary">Modifier</button>
                                                     <form action="{{ route('droitacces.destroy', $droit->id_droitacces) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                                        <button class="btn btn-primary">Modifier</button>
-                                                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Supprimer</button>
+                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
                                                     </form>
                                                 </div>
                                             
