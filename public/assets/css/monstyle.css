@@ -1,0 +1,13 @@
+.custom-card-image {
+    max-height: 200px; 
+    width: 100%; 
+    object-fit: cover; 
+}
+.pdp {
+    width:110px;
+    height: 110px;
+}
+
+.img-70 {
+    height:70px
+}
