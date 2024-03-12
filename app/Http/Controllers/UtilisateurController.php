@@ -13,6 +13,7 @@ use App\Models\Service;
 
 class UtilisateurController extends Controller
 {
+    //Methode Affichage Utilisateur
     public function showUserCards()
     {
         $utilisateurs = Utilisateur::all();
@@ -20,6 +21,7 @@ class UtilisateurController extends Controller
         return view('admin.apps.user-cards', compact('utilisateurs', 'services'));
     }
 
+    //Methode Affichage Formulaire d'enregistrement
     public function showRegistrationForm()
     {
         $listeDesDroitsAcces = DroitAcces::all();
@@ -30,6 +32,7 @@ class UtilisateurController extends Controller
         return view('admin.apps.register', compact('listeDesDroitsAcces', 'listeDesPersonnels', 'listeDesProfils', 'listeDesServices'));
     }
 
+    //Methode Création d'Utilisateur
     public function createUtilisateur(Request $request)
     {
         $request->validate([
@@ -81,12 +84,11 @@ class UtilisateurController extends Controller
             'img_pdp' => $imgPdpPath,
             'img_pdc' => $imgPdcPath,
         ]);
-        Auth::login($newUser);
 
-    // return response()->json($newUser);
     return redirect()->back()->with('success', 'Utilisateur enregistré');;
     }
 
+    //Methode Modification Utilisateur
     public function edit(Request $request)
     {
         $listeDesDroitsAcces = DroitAcces::all();
@@ -100,6 +102,7 @@ class UtilisateurController extends Controller
         return view('admin.apps.edit-profile', compact('utilisateur', 'listeDesDroitsAcces', 'listeDesPersonnels', 'listeDesProfils', 'listeDesServices'));
     }
 
+    //Methode Modification Utilisateur
     public function update(Request $request)
     {
         $request->validate([
@@ -112,8 +115,6 @@ class UtilisateurController extends Controller
             'locked' => 'nullable|integer|',
             'commentaire' => 'nullable|string|max:200',
             'biographie'=> 'nullable|string|max:200',
-            // 'id_profil' => 'nullable|integer',
-            // 'id_personnel'=> 'nullable|integer',
             'pwd' => 'required|string|max:100',
             'date_d_activation' => 'nullable|date',
             'id_droitacces'=> 'nullable|integer',
@@ -148,8 +149,6 @@ class UtilisateurController extends Controller
         $utilisateur->locked = $request->has('locked') ? 1 : 0;
         $utilisateur->commentaire = $request->input('commentaire');
         $utilisateur->biographie = $request->input('biographie');
-        // $utilisateur->id_profil = $request->input('id_profil');
-        // $utilisateur->id_personnel = $request->input('id_personnel');
         $utilisateur->pwd = $request->input('pwd');
         $utilisateur->date_locked = $request->input('date_d_activation');
         $utilisateur->id_droitacces = $request->input('id_droitacces');
@@ -161,7 +160,8 @@ class UtilisateurController extends Controller
 
         return redirect()->route('edit-profile', ['id_utilisateur' => $id_utilisateur])->with('success', 'Modification réussie');
     }
-   
+    
+    //Methode Affichage Utilisateur
     public function destroy($id_utilisateur)
     {
         $utilisateur = Utilisateur::findOrFail($id_utilisateur);

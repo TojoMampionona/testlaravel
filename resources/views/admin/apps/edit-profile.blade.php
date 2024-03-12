@@ -161,34 +161,12 @@
 	                                    <textarea class="form-control" rows="5" name="commentaire" placeholder="Ajouter du commentaire sur cet utilisateur" >{{ $utilisateur->commentaire }}</textarea>
 	                                </div>
 	                            </div>
-                                
                                 <div class="col-md-12 mt-3">
 	                                <div>
 	                                    <label class="form-label">Date d'activation</label>
 	                                    <input class="form-control" type="date" name="date_d_activation" value="{{ $utilisateur->date_locked }}"/>
 	                                </div>
 	                            </div>
-                            
-                                <!-- <div class="col-4 mt-3">
-                                    <div class="mb-3">
-                                        <label class="form-label">Profil</label>
-										<select class="form-control" name="id_profil">
-											@foreach($listeDesProfils as $profil)
-												<option value="{{ $utilisateur->id_profil }}" {{ $utilisateur->id_profil == $profil->id_profil ? 'selected' : '' }}>{{ $profil->id_profil }} - {{ $profil->libelle }}</option>
-											@endforeach
-										</select>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="col-4 mt-3">
-                                    <div class="mb-3">
-                                        <label class="form-label">ID Personnel</label>
-										<select class="form-control" name="id_personnel">
-											@foreach($listeDesPersonnels as $personnel)
-												<option value="{{ $utilisateur->id_personnel }}" {{ $utilisateur->id_personnel == $personnel->id_personnel ? 'selected' : '' }}>{{ $personnel->id_personnel }}</option>
-											@endforeach
-										</select>
-                                    </div>
-                                </div> -->
                                 <div class="col-4 mt-3">
                                     <div class="mb-3">
                                         <label class="form-label">Droit d'accès</label>

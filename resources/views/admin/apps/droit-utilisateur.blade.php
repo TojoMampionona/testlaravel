@@ -80,25 +80,29 @@
                                                 <h5 class="modal-title" id="exampleModalLabel">{{ $droit->libelle }} - {{ $droit->code }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            
-                                               
                                                 <div class="modal-body">
                                                     <div class="mb-3 col-md-12 mt-0">
-                                                        <label for="con-name">Libellé</label>
-                                                        <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <input class="form-control" name="edit_name_droit" type="text" required="" placeholder="Nom du droit" autocomplete="off" value="{{ $droit->libelle }}">
-                                                        </div>
-                                                        <div class="col-sm-6">   
-                                                            <input class="form-control" name="edit_code" type="text" required="" placeholder="CODE" autocomplete="off" value="{{ $droit->code }}">
-                                                        </div>
-                                                        </div>
+                                                        <form method="POST" id="formEditProfile" action="{{ route ('update-droit', ['id_droitacces' => $droit->id_droitacces]) }}" enctype="multipart/form-data" class="card" style="border:none">
+                                                        @csrf
+                                                        @method('PUT') 
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <label for="libelle-name">Libellé</label>
+                                                                    <input class="form-control" name="edit_name_droit" type="text" required="" placeholder="Nom du droit" autocomplete="off" value="{{ $droit->libelle }}">
+                                                                </div>
+                                                                <div class="col-sm-6">   
+                                                                    <label for="code-name">Code</label>
+                                                                    <input class="form-control" name="edit_code" type="text" required="" placeholder="CODE" autocomplete="off" value="{{ $droit->code }}">
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary mt-2 col-6">Modifier</button>
+                                                        </form>
+                                                        
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
+                                                <div class="modal-footer justify-content-center">
                                                     
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                                    <button type="button" class="btn btn-primary">Modifier</button>
                                                     <form action="{{ route('droitacces.destroy', $droit->id_droitacces) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
